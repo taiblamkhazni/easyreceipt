@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('libelle',100);
             $table->string('tache',100);
             $table->integer('salaire');
-            $table->string('file_name');
+            $table->string('file_name')->nullable();
             $table->timestamps();
         });
     }

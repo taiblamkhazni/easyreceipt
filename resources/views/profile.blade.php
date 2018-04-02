@@ -19,12 +19,13 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group label-floating">
-                    <label class="control-label">Fist Name</label>
-                    <input type="text" class="form-control" value="">
-                </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Image</label>
+                        <input type="file" class="form-control-file" name="file_image" id="exampleFormControlFile1">
+                    </div>                
             </div>
-            <div class="col-md-6">
+        </div>    
+            <!--<div class="col-md-6">
                 <div class="form-group label-floating">
                     <label class="control-label">Last Name</label>
                     <input type="text" class="form-control" value="">
@@ -69,7 +70,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
         <div class="clearfix"></div>
     </form>

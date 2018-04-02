@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Client;
 use App\user;
 use Auth;
@@ -38,6 +39,7 @@ class ClientController extends Controller
         return redirect('cvs');
     }*/
     public function search(Request $request){
+
         if (Auth::user()->is_admin) {
              $listticket=Search::search(
                 "Client" ,
@@ -49,7 +51,7 @@ class ClientController extends Controller
                30 
             );
              return view('user',['a'=>$listticket]);
-         }else{
+            }else{
         $listticket=Search::search(
                 "Client" ,
                 ['libelle' , 'tache'] ,
@@ -58,6 +60,7 @@ class ClientController extends Controller
                 ['id'  , 'asc'] ,
                false   
             )->where('user_id' , Auth::user()->id)->get();
+            
           return view('user',['a'=>$listticket]);
       }
     }
@@ -74,6 +77,9 @@ class ClientController extends Controller
     public function update(Request $request,$id){
         $cv=user::find($id);
         $cv->name=$request->input('name');
+        if ($request->hasfile('file_image')) {
+           $cv->file_image=$request->file_image->store('image');
+        }
         $cv->save();
         session()->flash('flash','les informations à été bien Modiffier !!');
         return redirect('ticket');
