@@ -7,6 +7,7 @@ use App\Client;
 use App\user;
 use Auth;
 use Search;
+use Image;
 
 class ClientController extends Controller
 {
@@ -25,19 +26,25 @@ class ClientController extends Controller
         return view('user',['a'=>$listticket]);
     }
 
-  /* public function create(){
-    return view('');
-}
+    public function create(){
+    return view('image');
+                            }
 
      //pour enregistrer dans la base donne
-    public function store(){
-        $cv=new Client();
-        $cv->titre=$Request->input('titre');
-        $cv->presentation=$Request->input('presentation');
-        $cv->save();
-        session()->flash('flach','le cv à été bien enregistré !!');
-        return redirect('cvs');
-    }*/
+    public function store(Request $request){
+        
+        if ($request->hasfile('fileimage')) {
+            $fileimage=$request->file('fileimage');
+            $filename=time() . '.' .$fileimage->getClientOriginalExtension();
+            Image::make($fileimage)->resize(300,300)->save(public_path('/publics/images/' . $filename));
+            $user=Auth::user();
+            $user->fileimage=$filename;
+            $user->save();
+        }
+        session()->flash('flash','les informations à été bien Modiffier !!');
+        
+        return redirect('ticket',array('user'=>Auth::user()));
+    }
     public function search(Request $request){
 
         if (Auth::user()->is_admin) {
@@ -45,7 +52,7 @@ class ClientController extends Controller
                 "Client" ,
                 ['libelle' , 'tache'] ,
                 $request->search  ,
-                ['id' , 'libelle', 'tache','salaire','created_at','file_name'],
+                ['id' , 'libelle', 'tache','salaire','created_at','filephoto'],
                 ['id'  , 'asc'] ,
                true ,
                30 
@@ -56,7 +63,7 @@ class ClientController extends Controller
                 "Client" ,
                 ['libelle' , 'tache'] ,
                 $request->search  ,
-                ['id' , 'libelle', 'tache','salaire','created_at','file_name'],
+                ['id' , 'libelle', 'tache','salaire','created_at','filephoto'],
                 ['id'  , 'asc'] ,
                false   
             )->where('user_id' , Auth::user()->id)->get();
@@ -77,9 +84,7 @@ class ClientController extends Controller
     public function update(Request $request,$id){
         $cv=user::find($id);
         $cv->name=$request->input('name');
-        if ($request->hasfile('file_image')) {
-           $cv->file_image=$request->file_image->store('image');
-        }
+        $cv->fileimage=$request->input('fileimage');
         $cv->save();
         session()->flash('flash','les informations à été bien Modiffier !!');
         return redirect('ticket');

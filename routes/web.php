@@ -19,8 +19,8 @@ Auth::routes();
 
 
 Route::get('ticket','ClientController@index');
-//Route::get('ticket/create','ClientController@create');
-//Route::post('ticket','ClientController@store');
+Route::get('ticket/create','ClientController@create');
+Route::post('ticket','ClientController@store');
 Route::get('ticket/{id}/profile','ClientController@edit');
 Route::put('ticket/{id}','ClientController@update');
 Route::delete('ticket/{id?}','ClientController@destroy');

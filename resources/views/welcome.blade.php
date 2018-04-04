@@ -66,7 +66,13 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            
             @if (Route::has('login'))
+                <div class="top-left links">
+                <a class="inbox-avatar" href="{{url('ticket/create')}}">
+                                        <img src="{{asset('assets/image/logo.png')}}">
+                                    </a>
+            </div>
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/ticket') }}">Home</a>

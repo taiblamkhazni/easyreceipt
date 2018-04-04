@@ -21,7 +21,7 @@
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Image</label>
-                        <input type="file" class="form-control-file" name="file_image" id="exampleFormControlFile1">
+                        <input type="file" value="{{$e->file_image}}" class="form-control-file" name="file_image" id="exampleFormControlFile1">
                     </div>                
             </div>
         </div>    

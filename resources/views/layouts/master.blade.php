@@ -19,9 +19,9 @@
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 </ul>
                 @else
-                <a class="inbox-avatar" href="javascript:;">
-                              			<img  width="64" hieght="60" src="{{asset('http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg')}}">
-                          			</a>
+                <a class="inbox-avatar" href="{{url('ticket/create')}}">
+                    <img  width="64" hieght="60" src="publics/images/{{Auth::user()->fileimage}}">
+                </a>
                 <div class="user-name">
                     <h5><a href="">{{ Auth::user()->name }}</a></h5>
                 </div>
