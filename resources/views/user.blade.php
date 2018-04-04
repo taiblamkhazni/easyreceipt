@@ -1,6 +1,6 @@
  @extends('layouts.master')
   @section('dynamique')
- 
+
   @if(session()->has('flach'))
 <div class="alert alert-success">
     {{session()->get('flach')}}
@@ -109,5 +109,4 @@
         </tr>
     </form>
 </table>
-
 @endsection

@@ -1,6 +1,9 @@
-<link href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
+@yield('css')
+<link href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet prefetch" href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/user.css')}}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+
 <!-- Fonts -->
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -99,6 +102,7 @@
       </div>
   </div>-->
 </div>
+@yield('js')
 <!-- Scripts -->
 <script src="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('https://code.jquery.com/jquery-1.11.1.min.js')}}"></script>

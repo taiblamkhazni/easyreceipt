@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         AdvanceSearch\AdvanceSearchProvider\AdvanceSearchProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+         Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*
          * Package Service Providers...
