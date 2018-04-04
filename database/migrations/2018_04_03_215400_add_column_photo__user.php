@@ -14,7 +14,7 @@ class AddColumnPhotoUser extends Migration
     public function up()
     {
         Schema::table('Users', function (Blueprint $table) {
-            $table->string('fileimage')->nullable();
+            $table->string('fileimage')->default('public/image/default.jpeg');
         });
     }
 

@@ -19,11 +19,11 @@
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 </ul>
                 @else
-                <a class="inbox-avatar" href="{{url('ticket/create')}}">
-                    <img  width="64" hieght="60" src="publics/images/{{Auth::user()->fileimage}}">
+                <a class="inbox-avatar" href="{{url('ticket/'.Auth::user()->id.'/profile')}}">
+                    <img  width="64" hieght="60" src="{{Storage::disk('local')->url(Auth::user()->fileimage)}}">
                 </a>
                 <div class="user-name">
-                    <h5><a href="">{{ Auth::user()->name }}</a></h5>
+                    <h5><a href="{{url('ticket/'.Auth::user()->id.'/profile')}}">{{ Auth::user()->name }}</a></h5>
                 </div>
                 <a class="mail-dropdown pull-right" data-toggle="dropdown" href="">
                              	    <i class="fa fa-chevron-down"></i>			

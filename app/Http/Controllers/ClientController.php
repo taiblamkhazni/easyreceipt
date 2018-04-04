@@ -26,25 +26,22 @@ class ClientController extends Controller
         return view('user',['a'=>$listticket]);
     }
 
-    public function create(){
+    /*public function create(){
     return view('image');
                             }
 
      //pour enregistrer dans la base donne
     public function store(Request $request){
-        
+        $cv=new user();
         if ($request->hasfile('fileimage')) {
-            $fileimage=$request->file('fileimage');
-            $filename=time() . '.' .$fileimage->getClientOriginalExtension();
-            Image::make($fileimage)->resize(300,300)->save(public_path('/publics/images/' . $filename));
-            $user=Auth::user();
-            $user->fileimage=$filename;
-            $user->save();
+           $cv->fileimage=$request->fileimage->store('public/image');
         }
-        session()->flash('flash','les informations à été bien Modiffier !!');
+       $cv->save();
         
-        return redirect('ticket',array('user'=>Auth::user()));
-    }
+        return redirect('ticket');
+
+        
+    }*/
     public function search(Request $request){
 
         if (Auth::user()->is_admin) {
@@ -84,7 +81,10 @@ class ClientController extends Controller
     public function update(Request $request,$id){
         $cv=user::find($id);
         $cv->name=$request->input('name');
-        $cv->fileimage=$request->input('fileimage');
+         if ($request->hasfile('fileimage')) {
+           $cv->fileimage=$request->file('fileimage')->store('public/image');
+        }
+        
         $cv->save();
         session()->flash('flash','les informations à été bien Modiffier !!');
         return redirect('ticket');

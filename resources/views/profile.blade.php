@@ -1,7 +1,7 @@
 @extends('layouts.master') 
 @section('dynamique')
 <div class="card-content">
-    <form method="post" action="{{url('ticket/'.Auth::user()->id)}}">
+    <form method="post" action="{{url('ticket/'.Auth::user()->id)}}" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT"> {{csrf_field()}}
         <div class="row">
             <div class="col-md-6">
@@ -21,7 +21,7 @@
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Image</label>
-                        <input type="file" value="{{$e->file_image}}" class="form-control-file" name="file_image" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" name="fileimage" id="exampleFormControlFile1">
                     </div>                
             </div>
         </div>    
