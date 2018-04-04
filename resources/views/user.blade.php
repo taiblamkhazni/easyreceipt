@@ -100,7 +100,7 @@
                             <td class="view-message ">{{$info->tache}}</td>
                             <td class="view-message">{{$info->salaire}}<i class="fa fa-usd"></i></td>
                             <td class="view-message">{{$info->created_at}}</td>
-                        <td class="view-message"><a href="download/{{$info->file_name}}" download="{{$info->file_name}}"><i class="fa fa-download"></i></a></td>
+                        <td class="view-message"><a href="#" download="#"><i class="fa fa-download"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>

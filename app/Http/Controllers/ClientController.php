@@ -43,13 +43,12 @@ class ClientController extends Controller
         
     }*/
     public function search(Request $request){
-
         if (Auth::user()->is_admin) {
              $listticket=Search::search(
                 "Client" ,
                 ['libelle' , 'tache'] ,
                 $request->search  ,
-                ['id' , 'libelle', 'tache','salaire','created_at','filephoto'],
+                ['id' , 'libelle', 'tache','salaire','created_at'],
                 ['id'  , 'asc'] ,
                true ,
                30 
@@ -60,11 +59,10 @@ class ClientController extends Controller
                 "Client" ,
                 ['libelle' , 'tache'] ,
                 $request->search  ,
-                ['id' , 'libelle', 'tache','salaire','created_at','filephoto'],
+                ['id' , 'libelle', 'tache','salaire','created_at'],
                 ['id'  , 'asc'] ,
                false   
             )->where('user_id' , Auth::user()->id)->get();
-            
           return view('user',['a'=>$listticket]);
       }
     }
