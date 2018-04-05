@@ -1,8 +1,10 @@
 @yield('css')
+
 <link href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet prefetch" href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/user.css')}}">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Fonts -->
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -52,7 +54,7 @@
                     <a href="{{url('ticket/'.Auth::user()->id.'/profile')}}"><i class="fa fa-user"></i> User Profile</a>
                 </li>
                 <li>
-                    <a href="{{url('ticket/Codebarre')}}"><i class=" fa fa-barcode"></i> Mon Code Barre</a>
+                    <a href="{{url('ticket/'.Auth::user()->id.'/Codebarre')}}"><i class=" fa fa-barcode"></i> Mon Code Barre</a>
                 </li>
                 <li>
                     <a href="{{url('ticket/delete')}}"><i class=" fa fa-trash-o"></i> Tickets Supprimer</a>
@@ -104,7 +106,7 @@
 </div>
 @yield('js')
 <!-- Scripts -->
-<script src="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('https://code.jquery.com/jquery-1.11.1.min.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
 <SCRIPT LANGUAGE='javascript' src="{{asset('assets/js/code128.js')}}"></SCRIPT>

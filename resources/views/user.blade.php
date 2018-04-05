@@ -66,15 +66,6 @@
                     <button class="btn btn-danger" type="submit">
                                         <i class="fa fa-trash-o fa-lg"></i> Delete
                                       </button>
-                    <ul class="unstyled inbox-pagination">
-                        <li><span>1-50 of 234</span></li>
-                        <li>
-                            <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
-                        </li>
-                        <li>
-                            <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
-                        </li>
-                    </ul>
 
                 </div>
             </td>
@@ -100,11 +91,12 @@
                             <td class="view-message ">{{$info->tache}}</td>
                             <td class="view-message">{{$info->salaire}}<i class="fa fa-usd"></i></td>
                             <td class="view-message">{{$info->created_at}}</td>
-                        <td class="view-message"><a href="#" download="#"><i class="fa fa-download"></i></a></td>
+                        <td class="view-message"><a href="{{url('ticket/'.Auth::user()->id.'/pdf')}}" ><i class="fa fa-download"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {{$a->links()}}
             </td>
         </tr>
     </form>

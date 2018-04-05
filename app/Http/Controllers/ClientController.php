@@ -8,6 +8,7 @@ use App\user;
 use Auth;
 use Search;
 use Image;
+use PDF;
 
 class ClientController extends Controller
 {
@@ -18,12 +19,17 @@ class ClientController extends Controller
     //pour afficher les information de la base donne
     public function index(){
         if (Auth::user()->is_admin) {
-            $listticket=Client::all();
+            $listticket=Client::paginate(1);
         }else{
-            $listticket=Client::where('user_id',Auth::user()->id)->get();
+            $listticket=Client::where('user_id',Auth::user()->id)->paginate(1);
         }
         
         return view('user',['a'=>$listticket]);
+    }
+     public function pdf($id){
+        $a=user::find($id);
+        $pdf=PDF::loadView('pdf',['a'=>$a]);
+        return $pdf->download('ticket.pdf');
     }
 
     /*public function create(){

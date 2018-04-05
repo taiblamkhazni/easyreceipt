@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(0);
             $table->string('confirmation')->nullable();
+            $table->string('codebarr')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

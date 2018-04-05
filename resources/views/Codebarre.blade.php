@@ -1,20 +1,35 @@
  @extends('layouts.master') 
  @section('dynamique')
-
+<style>
+.row{
+    margin:0px;
+}
+h2{
+    margin-top:60px;
+}
+</style>
 <div class="container">
-    <div>
-        <SCRIPT LANGUAGE='javascript'>
-            acode = new Code128()
-            acode.code = '{{ Auth::user()->id }}'
-            acode.type = 'CODE128'
-            acode.withtext = true
-            acode.xsize = 1
-            acode.ysize = 50
-            acode.xratio = 3.0
-            acode.xinter = 1
-            document.write(acode.draw())
-        </SCRIPT>
+   <div class="row">
+   <div class="col-md-2">
     </div>
+    <div class="col-md-4">
+       <h2>your Code Barre :</h2>
+    </div>
+    <div class="col-md-4">
+        </div>
+
+   </div>
+   <br>
+   <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-6" >
+            <div>{!! DNS1D::getBarcodeHTML(Auth::user()->id,'C128A') !!}</div>
+        </div>
+        <div class="col-md-4">
+        
+        </div>
+   </div>
 </div>
 
 @endsection

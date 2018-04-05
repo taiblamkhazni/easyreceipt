@@ -29,5 +29,6 @@ Route::get('ticket/Codebarre','ClientController@Codebarre');
 Route::post('ticket/search','ClientController@search');
 //Route::resource('ticket','ClientController');
 Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm');
+Route::get('ticket/{id}/pdf','ClientController@pdf');
 
 Route::get('/home', 'HomeController@index')->name('home');
